@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Unit1ExerciseSolutionJava8 {
     public static void main(String[] args) {
@@ -20,12 +21,11 @@ public class Unit1ExerciseSolutionJava8 {
         System.out.println("Print all");
         printConditionally(people, p -> true);
         System.out.println("Print Conditionally");
-        Condition condition = p -> p.getSecondName().startsWith("s");
 
-        printConditionally(people, condition);
+        printConditionally(people, p -> p.getSecondName().startsWith("s"));
     }
 
-    private static void printConditionally(List<Person> people, Condition condition) {
+    private static void printConditionally(List<Person> people, Predicate<Person> condition) {
         for(Person person: people){
             if(condition.test(person))
                 System.out.println(person);
