@@ -1,4 +1,4 @@
-package exercises;
+package unit1.exercises;
 
 public class Person {
     private String firstName;
