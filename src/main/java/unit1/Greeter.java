@@ -9,8 +9,18 @@ public class Greeter {
     public static void main(String[] args) {
         Greeter greeter = new Greeter();
         Greeting helloWorldGreeting = new HelloWorldGreeting();
+        greeter.greet(helloWorldGreeting);
 
-        Greeting lambdaGreeting = () -> System.out.println("Hello world");
+        greeter.greet(() -> System.out.println("Lambda as argument"));//Lambda as argument
+
+        Greeting lambdaGreeting = () -> System.out.println("Lambda Greeting");
+        lambdaGreeting.perform();
+
+        MyAdd addFunction = (x, y) -> x + y;
+        int z = addFunction.add(2,3);
+        System.out.println("z: " + z);
+
+
         Greeting innerClassGreeting = new Greeting() {
             @Override
             public void perform() {
@@ -20,10 +30,17 @@ public class Greeter {
 
         innerClassGreeting.perform();
 
+        MyLambda s = () -> System.out.println("s");
+        s.foo();
+
     }
 }
 
 interface MyLambda {
     void foo();
+}
+
+interface MyAdd {
+    int add(int x, int y);
 }
 
