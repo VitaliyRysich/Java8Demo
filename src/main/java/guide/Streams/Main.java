@@ -1,7 +1,9 @@
 package guide.Streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Main {
 //    Collectionlections in Java 8 are extended so you can simply create streams
@@ -94,7 +96,7 @@ public class Main {
 
 
 //        Count
-//        Count is a terminal operation returning the number of elements in the stream as a long.
+//        Count is a terminal operation returning the numbr of elements in the stream as a long.
 
         long startsWithB =
                 stringCollection
@@ -103,6 +105,26 @@ public class Main {
                         .count();
 
         System.out.println(startsWithB);    // 3
+
+
+//        This terminal operation performs a reduction on the elements of the stream with the given function.
+//        The result is an Optional holding the reduced value.
+
+        Optional<String> reduced =
+                stringCollection
+                        .stream()
+                        .sorted()
+                        .reduce((s1, s2) -> s1 + "#" + s2);
+
+        reduced.ifPresent(System.out::println);
+        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
+
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String result = letters
+                .stream()
+                .reduce("", (partialString, element) -> partialString + element.toUpperCase());
+        System.out.println(result);
+        //ABCDE
 
     }
 }
