@@ -5,6 +5,9 @@ public class Person {
     private String secondName;
     private int age;
 
+
+    public Person(){}
+
     public Person(String firstName, String secondName, int age) {
         this.firstName = firstName;
         this.secondName = secondName;
